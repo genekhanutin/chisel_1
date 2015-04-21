@@ -39,5 +39,12 @@ class HtmlConverterTest < Minitest::Test
     assert_equal '<h3>My Life in Desserts</h3>\n', h3.convert_headers
     assert_equal '<h4>My Life in Desserts</h4>\n', h4.convert_headers
     assert_equal '<h5>My Life in Desserts</h5>\n', h5.convert_headers
+  end
+
+  def test_it_converts_to_em_tags
+    html = HtmlConverter.new('You just *have* to try the cheesecake,')
+
+    assert_equal 'You just <em>have</em> to try the cheesecake,', html.convert_em
   end  
 end
+

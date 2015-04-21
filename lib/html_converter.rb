@@ -37,5 +37,10 @@ class HtmlConverter
   def convert_h5
     text.gsub(/^##### *(.*?)$/, '<h5>\\1</h5>') << '\n'
   end
-  
+
+  def convert_em
+    text.gsub!(/[*]\b/, '<em>')
+    text.gsub(/\b[*]/, '</em>')
+  end
+
 end
