@@ -52,5 +52,11 @@ class HtmlConverterTest < Minitest::Test
 
     assert_equal 'Ever since it appeared in <strong>Food & Wine</strong> this place has been packed every night.', html.convert_strong_tags
   end  
+
+  def test_it_converts_ampersand_symbols
+    html = HtmlConverter.new('Ever since it appeared in **Food & Wine** this place has been packed every night.')
+
+    assert_equal 'Ever since it appeared in **Food &amp; Wine** this place has been packed every night.', html.convert_ampersand_symbols
+  end  
 end
 

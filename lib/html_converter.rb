@@ -48,4 +48,8 @@ class HtmlConverter
     text.gsub(/\b[*][*]/, '</strong>')
   end
 
+  def convert_ampersand_symbols
+    text.gsub(/&/, '&amp;')
+  end
+
 end
