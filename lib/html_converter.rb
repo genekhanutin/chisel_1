@@ -52,4 +52,12 @@ class HtmlConverter
     text.gsub(/&/, '&amp;')
   end
 
+  def convert_nested_tags
+    text.gsub!(/[*][*]\b/, '<strong>')
+    text.gsub!(/\b[*][*]/, '</strong>')
+    convert_em
+  end
+
+  
+
 end
