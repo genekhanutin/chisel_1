@@ -43,4 +43,9 @@ class HtmlConverter
     text.gsub(/\b[*]/, '</em>')
   end
 
+  def convert_strong_tags
+    text.gsub!(/[*][*]\b/, '<strong>')
+    text.gsub(/\b[*][*]/, '</strong>')
+  end
+
 end

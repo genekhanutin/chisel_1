@@ -46,5 +46,11 @@ class HtmlConverterTest < Minitest::Test
 
     assert_equal 'You just <em>have</em> to try the cheesecake,', html.convert_em
   end  
+
+  def test_it_converts_to_strong_tags
+    html = HtmlConverter.new('Ever since it appeared in **Food & Wine** this place has been packed every night.')
+
+    assert_equal 'Ever since it appeared in <strong>Food & Wine</strong> this place has been packed every night.', html.convert_strong_tags
+  end  
 end
 
