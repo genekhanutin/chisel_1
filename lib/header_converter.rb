@@ -38,5 +38,4 @@ attr_reader :text
   def convert_h5
     text.gsub(/^##### *(.*?)$/, '<h5>\\1</h5>') << '\n'
   end
-
 end
