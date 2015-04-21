@@ -64,6 +64,7 @@ class HtmlConverterTest < Minitest::Test
 
     assert_equal 'Ever since it appeared in **Food &amp; Wine** this place has been packed every night.', html.convert_ampersand_symbols
   end
-  
+
+  def 
 end
 
