@@ -6,16 +6,16 @@ attr_reader :text
   end
 
   def convert_headers
-    if text.scan(/#/).count == 1
-      convert_h1
-    elsif text.scan(/#/).count == 2
-      convert_h2
-    elsif text.scan(/#/).count == 3
-      convert_h3
+    if text.scan(/#/).count == 5
+      convert_h5
     elsif text.scan(/#/).count == 4
       convert_h4
-    else text.scan(/#/).count == 5
-      convert_h5
+    elsif text.scan(/#/).count == 3
+      convert_h3
+    elsif text.scan(/#/).count == 2
+      convert_h2
+    else text.scan(/#/).count == 1
+      convert_h1
     end
   end
 
@@ -38,6 +38,5 @@ attr_reader :text
   def convert_h5
     text.gsub(/^##### *(.*?)$/, '<h5>\\1</h5>') << '\n'
   end
-
 
 end
