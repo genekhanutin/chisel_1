@@ -1,10 +1,18 @@
-class ListHeader
-  attr_reader :header
-  def initialize(header)
-    @header = header
+class ListConverter
+  attr_reader :element
+
+  def initialize(element)
+    @element = element
   end
-  def convert_list
-    header.gsub!(/([\n])/) { |m| "<p>\n" }
-    header.gsub(":", ":\n</p>")
+
+  # def convert_list
+  #   header.gsub!(/([\n])/) { |m| "<p>\n" }
+  #   header.gsub(":", ":\n</p>")
+  # end
+
+  def convert_list_items
+    if element.start_with?("* ")
+      element.gsub!(/[*] (.*)$/, "<li>\\1</li>")
+    end
   end
 end

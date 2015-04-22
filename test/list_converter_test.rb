@@ -3,14 +3,12 @@ require './lib/list_converter'
 
 class ListHeaderTest < MiniTest::Test
   def test_list_converter_exists
-    assert ListHeader.new("Sample Text:")
+    assert ListConverter.new("Sample Text:")
   end
 
-  def test_it_converts_list_header
-    list = ListHeader.new("\nSample Text:")
-    assert_equal "<p>
-Sample Text:
-</p>", list.convert_list
-  end
-  
+  def test_it_adds_li_tags
+    html = ListConverter.new("* Sushi")
+
+    assert_equal "<li>Sushi</li>", html.convert_list_items
+  end  
 end
