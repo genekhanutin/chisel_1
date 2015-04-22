@@ -14,10 +14,11 @@ def convert
     if line.start_with?('#')
       HeaderConverter.new(line).convert_headers
     elsif line.start_with?('*')
-      line.SymbolConverter.new(line).convert_nested_tags
-      elsif line.include?('&') 
-        line.SymbolConverter.new(line).convert_ampersand_symbols
-      elsif
+      SymbolConverter.new(line).convert_nested_tags
+    elsif line.include?('&') 
+      SymbolConverter.new(line).convert_ampersand_symbols
+    elsif
+  end
 end
 
 # something like this ^^^

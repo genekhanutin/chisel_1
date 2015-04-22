@@ -1,5 +1,5 @@
 class SymbolConverter 
-attr_reader :text
+  attr_reader :text
 
   def initialize(text)
     @text = text
