@@ -4,7 +4,7 @@ attr_reader :text
   def initialize(text)
     @text = text
   end
-  
+
   def convert_em
     text.gsub!(/[*]\b/, '<em>')
     text.gsub(/\b[*]/, '</em>')
@@ -25,6 +25,8 @@ attr_reader :text
     convert_em
   end
 
-  def convert_symbols
-  end
+  # def convert_symbols
+  #   convert_nested_tags
+  #   convert_ampersand_symbols
+  # end
 end

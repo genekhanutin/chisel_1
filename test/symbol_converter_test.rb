@@ -25,4 +25,12 @@ class SymbolConverterTest < Minitest::Test
 
     assert_equal 'Ever since it appeared in **Food &amp; Wine** this place has been packed every night.', html.convert_ampersand_symbols
   end
+
+  def test_it_converts_all_symbols
+    skip
+    html = SymbolConverter.new('My *emphasized & **stronged** text* is awesome.')
+
+    assert_equal 'My <em>emphasized &amp; <strong>stronged</strong> text</em> is awesome.', html.convert_symbols
+  end
 end
+
