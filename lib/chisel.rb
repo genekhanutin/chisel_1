@@ -8,33 +8,41 @@ class Chisel
     @message = File.readlines(ARGV[0])
   end
 
-  def convert_to_html
-    message.map do |line|
-      if line.match(/^#/)
-        HeaderConverter.new(line).convert_headers
-      elsif line.match(/[*][*]/)
-        SymbolConverter.new(line).convert_strong_tags
-      elsif line.match(/[*]/)
-        SymbolConverter.new(line).convert_em
-      elsif line.match(/[&]/)
-        SymbolConverter.new(line).convert_ampersand_symbols
-      elsif line == "\n"
-        ''
-      else 
-        !line.match(/^# *(.*?)$/)
-        ParagraphCoverter.new(line).convert_p_tags
-      #   ParagraphCoverter.new(line).open_p_tags
-      # else !line.match('#')
-      #    ParagraphCoverter.new(line).close_p_tags
-      end
+  def convert_symbols
+    convert = message.each do |line|
+      SymbolConverter.new(line).convert_strong_tags
+      SymbolConverter.new(line).convert_em
+      SymbolConverter.new(line).convert_ampersand_symbols
     end
   end
+
+  # def convert_to_html
+  #   message.map do |line|
+  #     if line.match(/^#/)
+  #       HeaderConverter.new(line).convert_headers
+  #     elsif line.match(/[*][*]/)
+  #       SymbolConverter.new(line).convert_strong_tags
+  #     elsif line.match(/[*]/)
+  #       SymbolConverter.new(line).convert_em
+  #     elsif line.match(/[&]/)
+  #       SymbolConverter.new(line).convert_ampersand_symbols
+  #     elsif line == "\n"
+  #       ''
+  #     else 
+  #       !line.match(/^# *(.*?)$/)
+  #       ParagraphCoverter.new(line).convert_p_tags
+  #     #   ParagraphCoverter.new(line).open_p_tags
+  #     # else !line.match('#')
+  #     #    ParagraphCoverter.new(line).close_p_tags
+  #     end
+  #   end
+  # end
 end
 # splat, double splat, & need to called on text all the time
 # cannot have branches inside of if statement
 
 chisel = Chisel.new(ARGV[0])
-puts chisel.convert_to_html
+puts chisel.convert_symbols
 
 
 
