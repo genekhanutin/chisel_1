@@ -1,7 +1,16 @@
 require 'minitest/autorun'
-require 'list_converter'
+require './lib/list_converter'
 
-class ListConverterTest < Minitest::Test
-  def test_it_adds_p
+class ListHeaderTest < MiniTest::Test
+  def test_list_converter_exists
+    assert ListHeader.new("Sample Text:")
+  end
+
+  def test_it_converts_list_header
+    list = ListHeader.new("\nSample Text:")
+    assert_equal "<p>
+Sample Text:
+</p>", list.convert_list
+  end
+  
 end
-
