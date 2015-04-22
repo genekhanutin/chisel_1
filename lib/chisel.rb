@@ -1,6 +1,7 @@
 require './lib/header_converter'
 require './lib/paragraph_converter'
 require './lib/symbol_converter'
+require './lib/list_converter'
 
 class Chisel
   attr_accessor :text
@@ -14,6 +15,7 @@ class Chisel
       SymbolConverter.new(line).convert_strong_tags
       SymbolConverter.new(line).convert_em
       SymbolConverter.new(line).convert_ampersand_symbols
+      ListConverter.new(line).convert_ul_items
     end
   end
 
