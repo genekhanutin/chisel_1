@@ -3,14 +3,14 @@ require './lib/paragraph_converter'
 require './lib/symbol_converter'
 
 class Chisel
-  attr_accessor :message
+  attr_accessor :text
 
-  def initialize(message)
-    @message = File.read(ARGV[0]).split('\n')
+  def initialize
+    @text = File.read(ARGV[0]).split("\n")
   end
 
   def convert_symbols
-    convert = message.each do |line|
+    text.each do |line|
       SymbolConverter.new(line).convert_strong_tags
       SymbolConverter.new(line).convert_em
       SymbolConverter.new(line).convert_ampersand_symbols
@@ -18,13 +18,11 @@ class Chisel
   end
 
   def convert_all_headers
-    convert = convert_symbols.each do |line|
-      if line.match(/^#/)
-        HeaderConverter.new(line).convert_headers
-      end
+    convert_symbols.each do |line|
+      HeaderConverter.new(line).convert_headers
     end
   end 
 end
 
-chisel = Chisel.new(ARGV[0])
+chisel = Chisel.new
 puts chisel.convert_all_headers 
