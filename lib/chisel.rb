@@ -16,16 +16,22 @@ class Chisel
         SymbolConverter.new(line).convert_strong_tags
       elsif line.match(/[*]/)
         SymbolConverter.new(line).convert_em
-      elsif line.include?('&')
+      elsif line.match(/[&]/)
         SymbolConverter.new(line).convert_ampersand_symbols
-      elsif !line.match('#')
-        ParagraphCoverter.new(line).open_p_tags
-      else !line.match('#')
-        ParagraphCoverter.new(line).close_p_tags
+      elsif line == "\n"
+        ''
+      else 
+        !line.match(/^# *(.*?)$/)
+        ParagraphCoverter.new(line).convert_p_tags
+      #   ParagraphCoverter.new(line).open_p_tags
+      # else !line.match('#')
+      #    ParagraphCoverter.new(line).close_p_tags
       end
     end
   end
 end
+# splat, double splat, & need to called on text all the time
+# cannot have branches inside of if statement
 
 chisel = Chisel.new(ARGV[0])
 puts chisel.convert_to_html

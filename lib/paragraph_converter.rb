@@ -16,4 +16,10 @@ class ParagraphCoverter
   def close_p_tags
     text.gsub(/[\n][\n]/, "\n</p>\n")
   end
+
+  def convert_p_tags
+    if !text.match(/^# *(.*?)$/)
+      text.gsub(/^ *(.*?)$/, '<p>\\1</p>')
+    end
+  end
 end
