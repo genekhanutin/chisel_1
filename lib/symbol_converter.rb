@@ -1,4 +1,10 @@
 class SymbolConverter 
+attr_reader :text
+
+  def initialize(text)
+    @text = text
+  end
+  
   def convert_em
     text.gsub!(/[*]\b/, '<em>')
     text.gsub(/\b[*]/, '</em>')
