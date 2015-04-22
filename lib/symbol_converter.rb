@@ -24,9 +24,4 @@ class SymbolConverter
     text.gsub!(/\b[*][*]/, '</strong>')
     convert_em
   end
-
-  # def convert_symbols
-  #   convert_nested_tags
-  #   convert_ampersand_symbols
-  # end
 end

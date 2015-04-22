@@ -1,5 +1,5 @@
 class HeaderConverter
-attr_reader :text
+  attr_reader :text
 
   def initialize(text)  
     @text = text
@@ -20,22 +20,22 @@ attr_reader :text
   end
 
   def convert_h1
-    text.gsub(/^# *(.*?)$/, '<h1>\\1</h1>') << '\n'
+    text.gsub(/^# *(.*?)$/, '<h1>\\1</h1>')
   end
 
   def convert_h2
-    text.gsub(/^## *(.*?)$/, '<h2>\\1</h2>') << '\n'
+    text.gsub(/^## *(.*?)$/, '<h2>\\1</h2>')
   end
 
   def convert_h3
-    text.gsub(/^### *(.*?)$/, '<h3>\\1</h3>') << '\n'
+    text.gsub(/^### *(.*?)$/, '<h3>\\1</h3>')
   end
 
   def convert_h4
-    text.gsub(/^#### *(.*?)$/, '<h4>\\1</h4>') << '\n'
+    text.gsub(/^#### *(.*?)$/, '<h4>\\1</h4>')
   end
 
   def convert_h5
-    text.gsub(/^##### *(.*?)$/, '<h5>\\1</h5>') << '\n'
+    text.gsub(/^##### *(.*?)$/, '<h5>\\1</h5>')
   end
 end
