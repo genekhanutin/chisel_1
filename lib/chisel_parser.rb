@@ -3,11 +3,11 @@ require './lib/paragraph_converter'
 require './lib/symbol_converter'
 require './lib/list_converter'
 
-class Chisel
+class ChiselParser
   attr_accessor :text
 
   def initialize
-    @text = text
+    @text = File.readlines(ARGV[0])
   end
 
   def convert_symbols
@@ -28,11 +28,16 @@ class Chisel
   def convert_p_tags
     convert_lists.each do |line|
       ParagraphConverter.new(line).p_tags
+    end
   end
 
   def convert_all_headers
     convert_p_tags.each do |line|
       HeaderConverter.new(line).convert_headers
     end
+  end
+
+  def convert_to_html
+    
   end 
 end
