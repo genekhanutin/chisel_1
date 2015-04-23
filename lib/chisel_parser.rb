@@ -7,7 +7,7 @@ class Chisel
   attr_accessor :text
 
   def initialize
-    @text = File.readlines(ARGV[0])
+    @text = File.read(ARGV[0]).split("\n")
   end
 
   def convert_symbols
@@ -29,8 +29,8 @@ class Chisel
 end
 
 chisel = Chisel.new
-# puts chisel.convert_all_headers.join("") 
+puts chisel.convert_all_headers 
 
 html_file = File.open(ARGV[1], "w")
-html_file << chisel.convert_all_headers.join("")
+html_file << chisel.convert_all_headers.join("\n")
 html_file.close
