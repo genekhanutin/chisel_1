@@ -9,6 +9,7 @@ class ListConverter
   #   header.gsub!(/([\n])/) { |m| "<p>\n" }
   #   header.gsub(":", ":\n</p>")
   # end
+  def add
 
   def convert_ul_items
     if text.start_with?("* ")
