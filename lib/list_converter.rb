@@ -7,7 +7,7 @@ class ListConverter
 
   def convert_ul_items
   # require 'pry' ; binding.pry 
-    if text.start_with?("* ")
+    if text.start_with?("*")
       "<ul>\n" + text.gsub!(/\* (.+)/,"<li>\\1</li>") + "\n</ul>\n"
     else
       text
@@ -16,7 +16,7 @@ class ListConverter
 
   def convert_ol_items
     if text[0].to_i > 0
-      "<ol>\n" + text.gsub(/^\d+\. (.+)/,"<li>\\1</li>") + "</ol>"
+      text.gsub(/^\d+\. (.+)/,"<li>\\1</li>")
     else
       text
     end
