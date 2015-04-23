@@ -2,7 +2,7 @@ require './lib/chisel_parser'
 
 class Chisel
   def convert_html
-    ChiselParser.new.convert_all_headers    
+    ChiselParser.new.convert_all    
   end
 end
 parser = Chisel.new.convert_html.join("")

@@ -11,7 +11,7 @@ class ChiselParser
   end
 
   def convert_symbols
-    text.each do |line|
+    text.map do |line|
       SymbolConverter.new(line).convert_strong_tags
       SymbolConverter.new(line).convert_em
       SymbolConverter.new(line).convert_ampersand_symbols
@@ -19,25 +19,21 @@ class ChiselParser
   end
 
   def convert_lists
-    convert_symbols.each do |line|
+    convert_symbols.map do |line|
       ListConverter.new(line).convert_ul_items
       ListConverter.new(line).convert_ol_items
     end
   end
 
   def convert_p_tags
-    convert_lists.each do |line|
+    convert_lists.map do |line|
       ParagraphConverter.new(line).p_tags
     end
   end
 
-  def convert_all_headers
-    convert_p_tags.each do |line|
+  def convert_all
+    convert_p_tags.map do |line|
       HeaderConverter.new(line).convert_headers
     end
   end
-
-  def convert_to_html
-
-  end 
 end
