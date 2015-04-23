@@ -7,14 +7,14 @@ class ListHeaderTest < MiniTest::Test
   end
 
   def test_it_adds_li_tags
-    html = ListConverter.new("* Sushi")
+    html = ListConverter.new("* Sushi\n* Tempura\n* Yakitori\n")
 
-    assert_equal "<li>Sushi</li>", html.convert_ul_items
+    assert_equal "<ul>\n<li>Sushi</li>\n<li>Tempura</li>\n<li>Yakitori</li>\n</ul>", html.convert_ul_items
   end  
 
   def test_it_adds_li_tags
-    html = ListConverter.new("2. Barbeque")
+    html = ListConverter.new("1. Sushi\n2. Barbeque\n3. Mexican\n")
 
-    assert_equal "<li>Barbeque</li>", html.convert_ol_items
+    assert_equal "<ol>\n<li>Sushi</li>\n<li>Barbeque</li>\n<li>Mexican</li>\n</ol>", html.convert_ol_items
   end  
 end
