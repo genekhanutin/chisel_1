@@ -16,7 +16,7 @@ class ListConverter
 
   def convert_ol_items
     if text[0].to_i > 0
-      text.gsub(/^\d+\. (.+)/,"<li>\\1</li>")
+      "<ol>\n" + text.gsub(/^\d+\. (.+)/,"<li>\\1</li>") + "</ol>"
     else
       text
     end
