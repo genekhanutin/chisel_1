@@ -16,6 +16,7 @@ class Chisel
       SymbolConverter.new(line).convert_em
       SymbolConverter.new(line).convert_ampersand_symbols
       ListConverter.new(line).convert_ul_items
+      ListConverter.new(line).convert_ol_items
     end
   end
 
