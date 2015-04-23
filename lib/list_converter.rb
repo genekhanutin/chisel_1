@@ -6,7 +6,6 @@ class ListConverter
   end
 
   def convert_ul_items
-    tag_count = 0
     if text.start_with?("* ")
       text.gsub!(/[*] (.*)$/, "<li>\\1</li>")
     end
@@ -20,8 +19,18 @@ class ListConverter
   end  
 end
 
+  #  def convert_ul_items
+  #   if text.start_with?("*")
+  #   "<ul>\n" + text.gsub(/\* (.+)/,"<li>\\1</li>") + "\n</ul>\n"
+  #   else
+  #     text
+  #   end
+  # end
 
-  # def convert_list
-  #   header.gsub!(/([\n])/) { |m| "<p>\n" }
-  #   header.gsub(":", ":\n</p>")
+  # def convert_ol_items
+  #   if text[0].to_i > 0
+  #   "<ol>\n" + text.gsub(/^\d+\. (.+)/,"<li>\\1</li>") + "</ol>"
+  #   else
+  #     text
+  #   end
   # end
