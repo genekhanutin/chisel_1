@@ -7,7 +7,7 @@ class Chisel
   attr_accessor :text
 
   def initialize
-    @text = File.read(ARGV[0]).split("\n")
+    @text = text
   end
 
   def convert_symbols
@@ -15,22 +15,24 @@ class Chisel
       SymbolConverter.new(line).convert_strong_tags
       SymbolConverter.new(line).convert_em
       SymbolConverter.new(line).convert_ampersand_symbols
-      ListConverter.new(line).convert_ul_items
-      ListConverter.new(line).convert_ol_items
-      ParagraphConverter.new(line).p_tags
     end
   end
 
-  def convert_all_headers
+  def convert_lists
     convert_symbols.each do |line|
+      ListConverter.new(line).convert_ul_items
+      ListConverter.new(line).convert_ol_items
+    end
+  end
+
+  def convert_p_tags
+    convert_lists.each do |line|
+      ParagraphConverter.new(line).p_tags
+  end
+
+  def convert_all_headers
+    convert_p_tags.each do |line|
       HeaderConverter.new(line).convert_headers
     end
   end 
 end
-
-chisel = Chisel.new
-puts chisel.convert_all_headers 
-
-html_file = File.open(ARGV[1], "w")
-html_file << chisel.convert_all_headers.join("\n")
-html_file.close
