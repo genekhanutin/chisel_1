@@ -29,3 +29,7 @@ end
 
 chisel = Chisel.new
 puts chisel.convert_all_headers 
+
+html_file = File.open(ARGV[1], "w")
+html_file << chisel.convert_all_headers.join("\n")
+html_file.close
