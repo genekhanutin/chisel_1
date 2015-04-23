@@ -11,4 +11,10 @@ class ListHeaderTest < MiniTest::Test
 
     assert_equal "<li>Sushi</li>", html.convert_ul_items
   end  
+
+  def test_it_adds_li_tags
+    html = ListConverter.new("1. Sushi")
+
+    assert_equal "<li>Sushi</li>", html.convert_ol_items
+  end  
 end
